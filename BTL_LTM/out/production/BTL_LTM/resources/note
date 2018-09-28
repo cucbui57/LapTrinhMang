@@ -1,0 +1,3 @@
+Các Class implement Serializable có thuộc tính: "private static final long serialVersionUID = (x)L"
+trong đó (x) là giá trị để nhận dạng Serializable của class (?)
+(x) sẽ có 2 phần: phần đầu tiên là số thứ tự Package, phần sau là số thứ tự class implement Serializable trong package đó
