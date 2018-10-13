@@ -2,12 +2,11 @@ package Control.ServerController;
 
 import Control.DAO.DAOMessage;
 import Control.DAO.DAOParticipant;
-import Control.utils.FileUtils;
+import Control.utils.IOUtils;
 import Control.utils.SQLServerConnUtils_SQLJDBC;
 import Model.Message;
 import Model.Participant;
 import Model.SuccessRespone;
-import com.microsoft.sqlserver.jdbc.SQLServerConnection;
 
 import java.net.Socket;
 import java.sql.Connection;
@@ -15,7 +14,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Vector;
 
-public class SendMessageHandle extends Handle<SuccessRespone> {
+public class SendMessageHandle extends Handle {
     private DAOMessage daoMessage;
     private DAOParticipant daoParticipant;
     private Message message;
@@ -35,17 +34,16 @@ public class SendMessageHandle extends Handle<SuccessRespone> {
     }
 
     @Override
-    SuccessRespone execute() {
+    public void execute() {
         SuccessRespone successRespone = new SuccessRespone(false);
         if(daoMessage.insert(message) != 0){
             successRespone.setSuccess(true);
             Vector<Participant> participants = daoParticipant.selectbyID(message.getConversation_id());
             for(Participant participant: participants){
                 for(Socket socket: sockets.get(participant.getUser_id())){
-                    FileUtils.writeObject(socket, message);
+                    IOUtils.writeObject(socket, message);
                 }
             }
         }
-        return successRespone;
     }
 }

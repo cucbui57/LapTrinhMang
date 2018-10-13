@@ -2,7 +2,7 @@ package Control.ServerController;
 
 import Control.DAO.DAOConversation;
 import Control.DAO.DAOParticipant;
-import Control.utils.FileUtils;
+import Control.utils.IOUtils;
 import Control.utils.SQLServerConnUtils_SQLJDBC;
 import Model.CreateConversation.CreateConversationServerSend2Clients;
 import Model.CreateConversation.CreateConversationRequest;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Vector;
 
-public class CreateConversationHandle extends Handle<CreateConversationResponse> {
+public class CreateConversationHandle extends Handle {
     CreateConversationRequest createConversationRequest;
     DAOConversation daoConversation;
     DAOParticipant daoParticipant;
@@ -36,11 +36,11 @@ public class CreateConversationHandle extends Handle<CreateConversationResponse>
     }
 
     @Override
-    CreateConversationResponse execute() {
+    public void execute() {
         CreateConversationServerSend2Clients createConversationServerSend2Clients = new CreateConversationServerSend2Clients();
         createConversationServerSend2Clients.setConversation(createConversationRequest.getConversation());
         int res = daoConversation.insert(createConversationRequest.getConversation());
-        if(res == 0) return new CreateConversationResponse(false);
+//        if(res == 0) return new CreateConversationResponse(false);
         for(User user: createConversationRequest.getUsers()){
             Participant participant = new Participant(
                     createConversationRequest.getConversation().getConversation_id(),
@@ -51,12 +51,12 @@ public class CreateConversationHandle extends Handle<CreateConversationResponse>
                     user.getFirst_name() + " " + user.getLast_name()
             );
             res = daoParticipant.insert(participant);
-            if(res == 0) return new CreateConversationResponse(false);
+//            if(res == 0) return new CreateConversationResponse(false);
             createConversationServerSend2Clients.getParticipants().add(participant);
             for(Socket socket: sockets.get(participant.getUser_id())){
-                FileUtils.writeObject(socket, createConversationServerSend2Clients);
+                IOUtils.writeObject(socket, createConversationServerSend2Clients);
             }
         }
-        return new CreateConversationResponse(true);
+//        return new CreateConversationResponse(true);
     }
 }

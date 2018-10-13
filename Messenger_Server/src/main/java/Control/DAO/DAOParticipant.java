@@ -69,9 +69,9 @@ public class DAOParticipant extends IDAO<Participant> {
     public Vector<Participant> selectbyNumbers(int ID, int numbers) {
         Vector<Participant> participants = new Vector<Participant>();
         try{
-            this.preparedStatement = connection.prepareStatement("select * from Participants where user_id = ? order by last_time limit ?");
-            preparedStatement.setInt(1, ID);
-            preparedStatement.setInt(2, numbers);
+            this.preparedStatement = connection.prepareStatement("select top ? * from Participants where user_id = ? order by seen_message_id");
+            preparedStatement.setInt(1, numbers);
+            preparedStatement.setInt(2, ID);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Participant participant = new Participant(

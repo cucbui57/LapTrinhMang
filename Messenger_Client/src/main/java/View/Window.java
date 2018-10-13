@@ -1,6 +1,8 @@
 package View;
 
 import javax.swing.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class Window extends JFrame {
     private JPanel jPanel;
@@ -8,6 +10,7 @@ public class Window extends JFrame {
         this.setSize(600, 400);
         this.setVisible(true);
         this.setResizable(true);
+        this.setDefaultCloseOperation(3);
     }
 
     public JPanel getjPanel() {

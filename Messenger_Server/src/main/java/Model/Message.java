@@ -1,22 +1,25 @@
 package Model;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Message {
     private int conversation_id;
     private int message_id;
     private int sender_id;
-    private Timestamp create_at;
-    private Boolean file;
+    private Date date_create;
+    private Time time_create;
+    private boolean file;
     private String name;
     private byte[] content;
 
-    public Message(int conversation_id, int message_id, int sender_id, Timestamp create_at, Boolean file, String name, byte[] content) {
+    public Message(int conversation_id, int message_id, int sender_id, Date date_create, Time time_create, Boolean file, String name, byte[] content) {
         this.conversation_id = conversation_id;
         this.message_id = message_id;
         this.sender_id = sender_id;
-        this.create_at = create_at;
+        this.date_create = date_create;
+        this.time_create = time_create;
         this.file = file;
         this.name = name;
         this.content = content;
@@ -46,12 +49,24 @@ public class Message {
         this.sender_id = sender_id;
     }
 
-    public Timestamp getCreate_at() {
-        return create_at;
+    public Date getDate_create() {
+        return date_create;
     }
 
-    public void setCreate_at(Timestamp create_at) {
-        this.create_at = create_at;
+    public void setDate_create(Date date_create) {
+        this.date_create = date_create;
+    }
+
+    public Time getTime_create() {
+        return time_create;
+    }
+
+    public void setTime_create(Time time_create) {
+        this.time_create = time_create;
+    }
+
+    public void setFile(boolean file) {
+        this.file = file;
     }
 
     public String getName() {
@@ -62,7 +77,7 @@ public class Message {
         this.name = name;
     }
 
-    public Boolean isFile() {
+    public boolean isFile() {
         return file;
     }
 

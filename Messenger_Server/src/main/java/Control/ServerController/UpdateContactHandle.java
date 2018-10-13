@@ -8,7 +8,7 @@ import Model.SuccessRespone;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UpdateContactHandle extends Handle<SuccessRespone> {
+public class UpdateContactHandle extends Handle {
     DAOContact daoContact;
     Contact contact;
     public UpdateContactHandle(Contact contact) {
@@ -24,11 +24,10 @@ public class UpdateContactHandle extends Handle<SuccessRespone> {
     }
 
     @Override
-    SuccessRespone execute() {
+    public void execute() {
         SuccessRespone successRespone = new SuccessRespone(false);
         if(daoContact.update(contact) != 0){
             successRespone.setSuccess(true);
         }
-        return successRespone;
     }
 }

@@ -10,17 +10,14 @@ public class ConversationUpdate {
     private Conversation conversation;
     private Vector<Participant> participants;
     private Vector<Message> messages;
-    private Vector<AttachFile> attachFiles;
 
     public ConversationUpdate() {
     }
 
-    public ConversationUpdate(Conversation conversation, Vector<Participant> participants, Vector<Message> messages, Vector<AttachFile> attachFiles) {
-
+    public ConversationUpdate(Conversation conversation, Vector<Participant> participants, Vector<Message> messages) {
         this.conversation = conversation;
         this.participants = participants;
         this.messages = messages;
-        this.attachFiles = attachFiles;
     }
 
     public Conversation getConversation() {
@@ -46,13 +43,5 @@ public class ConversationUpdate {
 
     public void setMessages(Vector<Message> messages) {
         this.messages = messages;
-    }
-
-    public Vector<AttachFile> getAttachFiles() {
-        return attachFiles;
-    }
-
-    public void setAttachFiles(Vector<AttachFile> attachFiles) {
-        this.attachFiles = attachFiles;
     }
 }

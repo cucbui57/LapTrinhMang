@@ -1,10 +1,8 @@
 package Control.DAO;
 
-import Control.getPath;
-import Control.utils.FileUtils;
+import Control.utils.IOUtils;
 import Model.User;
 
-import java.io.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -28,7 +26,7 @@ public class DAOUser extends IDAO<User> {
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
-                byte[] bytes = FileUtils.File2Byte(path);
+                byte[] bytes = IOUtils.File2Byte(path);
                 User user = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
@@ -38,7 +36,7 @@ public class DAOUser extends IDAO<User> {
                         resultSet.getString(6),
                         resultSet.getString(7),
                         resultSet.getBoolean(8),
-                        resultSet.getTimestamp(9),
+                        resultSet.getDate(9),
                         bytes,
                         resultSet.getInt(11),
                         resultSet.getBoolean(12),
@@ -61,7 +59,7 @@ public class DAOUser extends IDAO<User> {
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
-                byte[] bytes = FileUtils.File2Byte(path);
+                byte[] bytes = IOUtils.File2Byte(path);
                 User user = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
@@ -71,7 +69,7 @@ public class DAOUser extends IDAO<User> {
                         resultSet.getString(6),
                         resultSet.getString(7),
                         resultSet.getBoolean(8),
-                        resultSet.getTimestamp(9),
+                        resultSet.getDate(9),
                         bytes,
                         resultSet.getInt(11),
                         resultSet.getBoolean(12),
@@ -98,7 +96,7 @@ public class DAOUser extends IDAO<User> {
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
-                byte[] bytes = FileUtils.File2Byte(path);
+                byte[] bytes = IOUtils.File2Byte(path);
                 User user = new User(
                         resultSet.getInt(1),
                         resultSet.getString(2),
@@ -108,7 +106,7 @@ public class DAOUser extends IDAO<User> {
                         resultSet.getString(6),
                         resultSet.getString(7),
                         resultSet.getBoolean(8),
-                        resultSet.getTimestamp(9),
+                        resultSet.getDate(9),
                         bytes,
                         resultSet.getInt(11),
                         resultSet.getBoolean(12),
@@ -154,7 +152,7 @@ public class DAOUser extends IDAO<User> {
         int rowResult;
         try{
             String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
-            if(FileUtils.Byte2File(path, user.getAvata())){
+            if(IOUtils.Byte2File(path, user.getAvata())){
                 preparedStatement = connection.prepareStatement("call insertUsers ? ? ? ? ? ? ? ? ? ? ? ?");
                 preparedStatement.setInt(1, user.getUser_id());
                 preparedStatement.setString(2, user.getUsername());
@@ -164,7 +162,7 @@ public class DAOUser extends IDAO<User> {
                 preparedStatement.setString(6, user.getFirst_name());
                 preparedStatement.setString(7, user.getLast_name());
                 preparedStatement.setBoolean(8, user.isSex());
-                preparedStatement.setTimestamp(9, user.getBirthday());
+                preparedStatement.setDate(9, user.getBirthday());
                 preparedStatement.setInt(10, user.getStatus());
                 preparedStatement.setBoolean(11, user.isActived());
                 preparedStatement.setBoolean(12, user.isBlocked());
@@ -185,7 +183,7 @@ public class DAOUser extends IDAO<User> {
         int rowResult;
         try{
             String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
-            if(FileUtils.Byte2File(path, user.getAvata())){
+            if(IOUtils.Byte2File(path, user.getAvata())){
                 preparedStatement = connection.prepareStatement("call updateUsers ? ? ? ? ? ? ? ? ? ? ? ?");
                 preparedStatement.setInt(1, user.getUser_id());
                 preparedStatement.setString(2, user.getUsername());
@@ -195,7 +193,7 @@ public class DAOUser extends IDAO<User> {
                 preparedStatement.setString(6, user.getFirst_name());
                 preparedStatement.setString(7, user.getLast_name());
                 preparedStatement.setBoolean(8, user.isSex());
-                preparedStatement.setTimestamp(9, user.getBirthday());
+                preparedStatement.setDate(9, user.getBirthday());
                 preparedStatement.setInt(10, user.getStatus());
                 preparedStatement.setBoolean(11, user.isActived());
                 preparedStatement.setBoolean(12, user.isBlocked());
@@ -317,7 +315,7 @@ public class DAOUser extends IDAO<User> {
     }
     public int updateAvata(int id, byte[] bytes){
         String path = pathAvata + Integer.toString(id) + ".jpg";
-        if(FileUtils.Byte2File(path, bytes)) return 1;
+        if(IOUtils.Byte2File(path, bytes)) return 1;
         return 0;
     }
     public int updateBirthday(int id, Date date){

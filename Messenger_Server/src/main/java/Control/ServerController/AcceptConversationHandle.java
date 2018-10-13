@@ -3,7 +3,7 @@ package Control.ServerController;
 import Control.DAO.DAOConversation;
 import Control.DAO.DAOMessage;
 import Control.DAO.DAOParticipant;
-import Control.utils.FileUtils;
+import Control.utils.IOUtils;
 import Control.utils.SQLServerConnUtils_SQLJDBC;
 import Model.Conversation;
 import Model.CreateConversation.AcceptNewConversationClientSend2Server;
@@ -17,9 +17,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Vector;
-import java.util.logging.SocketHandler;
 
-public class AcceptConversationHandle extends Handle<ConversationServerSend2Client> {
+public class AcceptConversationHandle extends Handle {
     private AcceptNewConversationClientSend2Server acceptNewConversationClientSend2Server;
     DAOParticipant daoParticipant;
     DAOMessage daoMessage;
@@ -41,22 +40,22 @@ public class AcceptConversationHandle extends Handle<ConversationServerSend2Clie
     }
 
     @Override
-    ConversationServerSend2Client execute() {
+    public void execute() {
         if(acceptNewConversationClientSend2Server.getParticipant().isAccepted()){
             int res = daoParticipant.updateAccepted(acceptNewConversationClientSend2Server.getParticipant().getConversation_id(),
                                                     acceptNewConversationClientSend2Server.getParticipant().getUser_id(),
                                                     true);
-            if(res == 0) return null;
+//            if(res == 0) return null;
             for(Integer user_id: acceptNewConversationClientSend2Server.getParticipants_id()){
                 for(Socket socket: sockets.get(user_id)){
-                    FileUtils.writeObject(socket, new AcceptNewConversationServerSend2Clients(acceptNewConversationClientSend2Server.getParticipant()));
+                    IOUtils.writeObject(socket, new AcceptNewConversationServerSend2Clients(acceptNewConversationClientSend2Server.getParticipant()));
                 }
             }
             Vector<Message> messages = daoMessage.selectbyNumbers(acceptNewConversationClientSend2Server.getParticipant().getConversation_id(), 20);
             Vector<Participant> participants = daoParticipant.selectbyID(acceptNewConversationClientSend2Server.getParticipant().getConversation_id());
             Conversation conversation = daoConversation.selectbyID(acceptNewConversationClientSend2Server.getParticipant().getConversation_id()).elementAt(0);
-            return new ConversationServerSend2Client(conversation, messages, participants);
+//            return new ConversationServerSend2Client(conversation, messages, participants);
         }
-        return null;
+//        return null;
     }
 }

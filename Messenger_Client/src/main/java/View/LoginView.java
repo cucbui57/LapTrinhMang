@@ -1,9 +1,12 @@
 package View;
 
+import Control.LoginController;
 import Model.Login.LoginRequest;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class LoginView extends JPanel {
     private JLabel jLabel_username;
@@ -59,6 +62,20 @@ public class LoginView extends JPanel {
         jPasswordField.setLocation(this.getWidth()/5*2, this.getHeight()/4*2);
     }
     public LoginRequest getLoginRequest(){
-        return new LoginRequest(jTextField_username.getText(), jPasswordField.getPassword().toString());
+        StringBuffer s = new StringBuffer();
+        char []password = jPasswordField.getPassword();
+        for (char c: password ) {
+            s.append(c);
+        }
+        return new LoginRequest(jTextField_username.getText(), s.toString());
+    }
+
+    public void reset(){
+        jPasswordField.setText("");
+        jTextField_username.setText("");
+    }
+
+    public void setLoginListenner(MouseListener mouseListener){
+        jButton_submit.addMouseListener(mouseListener);
     }
 }

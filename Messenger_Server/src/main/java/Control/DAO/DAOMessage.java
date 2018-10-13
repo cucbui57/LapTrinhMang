@@ -1,9 +1,8 @@
 package Control.DAO;
 
-import Control.utils.FileUtils;
+import Control.utils.IOUtils;
 import Model.Message;
 
-import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -31,22 +30,24 @@ public class DAOMessage extends IDAO<Message> {
                             resultSet.getInt(1),
                             resultSet.getInt(2),
                             resultSet.getInt(3),
-                            resultSet.getTimestamp(4),
-                            resultSet.getBoolean(5),
-                            resultSet.getString(6),
-                            resultSet.getString(7).getBytes()
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getBoolean(6),
+                            resultSet.getString(7),
+                            resultSet.getString(8).getBytes()
                     );
                     messages.add(message);
                 }else {
                     String path = pathAttachFile + Integer.toString(resultSet.getInt(2)) + resultSet.getString(6);
-                    byte[] bytes = FileUtils.File2Byte(path);
+                    byte[] bytes = IOUtils.File2Byte(path);
                     Message message = new Message(
                             resultSet.getInt(1),
                             resultSet.getInt(2),
                             resultSet.getInt(3),
-                            resultSet.getTimestamp(4),
-                            resultSet.getBoolean(5),
-                            resultSet.getString(6),
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getBoolean(6),
+                            resultSet.getString(7),
                             bytes
                     );
                     messages.add(message);
@@ -71,22 +72,24 @@ public class DAOMessage extends IDAO<Message> {
                             resultSet.getInt(1),
                             resultSet.getInt(2),
                             resultSet.getInt(3),
-                            resultSet.getTimestamp(4),
-                            resultSet.getBoolean(5),
-                            resultSet.getString(6),
-                            resultSet.getString(7).getBytes()
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getBoolean(6),
+                            resultSet.getString(7),
+                            resultSet.getString(8).getBytes()
                     );
                     messages.add(message);
                 }else {
                     String path = pathAttachFile + Integer.toString(resultSet.getInt(2)) + resultSet.getString(6);
-                    byte[] bytes = FileUtils.File2Byte(path);
+                    byte[] bytes = IOUtils.File2Byte(path);
                     Message message = new Message(
                             resultSet.getInt(1),
                             resultSet.getInt(2),
                             resultSet.getInt(3),
-                            resultSet.getTimestamp(4),
-                            resultSet.getBoolean(5),
-                            resultSet.getString(6),
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getBoolean(6),
+                            resultSet.getString(7),
                             bytes
                     );
                     messages.add(message);
@@ -103,9 +106,9 @@ public class DAOMessage extends IDAO<Message> {
     public Vector<Message> selectbyNumbers(int ID, int numbers) {
         Vector<Message> messages = new Vector<Message>();
         try{
-            this.preparedStatement = connection.prepareStatement("select * from Messages where conversation_id = ? limit ?");
-            preparedStatement.setInt(1, ID);
-            preparedStatement.setInt(2, numbers);
+            this.preparedStatement = connection.prepareStatement("select top ? * from Messages where conversation_id = ?");
+            preparedStatement.setInt(1, numbers);
+            preparedStatement.setInt(2, ID);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 if(resultSet.getBoolean(5) == false){
@@ -113,22 +116,24 @@ public class DAOMessage extends IDAO<Message> {
                             resultSet.getInt(1),
                             resultSet.getInt(2),
                             resultSet.getInt(3),
-                            resultSet.getTimestamp(4),
-                            resultSet.getBoolean(5),
-                            resultSet.getString(6),
-                            resultSet.getString(7).getBytes()
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getBoolean(6),
+                            resultSet.getString(7),
+                            resultSet.getString(8).getBytes()
                     );
                     messages.add(message);
                 }else {
                     String path = pathAttachFile + Integer.toString(resultSet.getInt(2)) + resultSet.getString(6);
-                    byte[] bytes = FileUtils.File2Byte(path);
+                    byte[] bytes = IOUtils.File2Byte(path);
                     Message message = new Message(
                             resultSet.getInt(1),
                             resultSet.getInt(2),
                             resultSet.getInt(3),
-                            resultSet.getTimestamp(4),
-                            resultSet.getBoolean(5),
-                            resultSet.getString(6).substring(5),
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getBoolean(6),
+                            resultSet.getString(7).substring(5),
                             bytes
                     );
                     messages.add(message);
@@ -149,12 +154,13 @@ public class DAOMessage extends IDAO<Message> {
             preparedStatement.setInt(1, message.getMessage_id());
             preparedStatement.setInt(2, message.getConversation_id());
             preparedStatement.setInt(3, message.getSender_id());
-            preparedStatement.setTimestamp(4, message.getCreate_at());
-            preparedStatement.setBoolean(5, message.isFile());
-            preparedStatement.setString(6, message.getName());
+            preparedStatement.setDate(4, message.getDate_create());
+            preparedStatement.setTime(5, message.getTime_create());
+            preparedStatement.setBoolean(6, message.isFile());
+            preparedStatement.setString(7, message.getName());
             if(message.isFile()){
                 String path = pathAttachFile + Integer.toString(message.getMessage_id()) + message.getName();
-                if(FileUtils.Byte2File(path, message.getContent())){
+                if(IOUtils.Byte2File(path, message.getContent())){
                     preparedStatement.setString(7, null);
                     rowResult = preparedStatement.executeUpdate();
                 }

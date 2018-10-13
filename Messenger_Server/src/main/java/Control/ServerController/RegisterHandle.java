@@ -12,7 +12,7 @@ import Model.User;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class RegisterHandle extends Handle<RegisterResponse> {
+public class RegisterHandle extends Handle {
     RegisterRequest registerRequest;
     DAOUser daoUser;
     DAOParticipant daoParticipant;
@@ -31,7 +31,7 @@ public class RegisterHandle extends Handle<RegisterResponse> {
     }
 
     @Override
-    RegisterResponse execute() {
+    public void execute() {
         RegisterResponse registerResponse = new RegisterResponse();
         if(!daoUser.isExistUsername(registerRequest.getUser().getUsername()) && !daoUser.isExistEmail(registerRequest.getUser().getEmail())){
             if(daoUser.insert(registerRequest.getUser()) != 0){
@@ -39,6 +39,5 @@ public class RegisterHandle extends Handle<RegisterResponse> {
                 registerResponse.setUser(daoUser.selectbyUsername(registerRequest.getUser().getUsername()).elementAt(0));
             }
         }
-        return registerResponse;
     }
 }

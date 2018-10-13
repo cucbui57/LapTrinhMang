@@ -2,10 +2,12 @@ package Model.Login;
 
 import Model.*;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Vector;
 
-public class LoginResponse {
+public class LoginResponse implements Serializable {
+    public static final long serialVersionUID = 6;
     private boolean accepted;
     private User user;
     private Vector<Contact> contacts;

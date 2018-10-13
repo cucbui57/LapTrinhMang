@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class User implements Serializable {
+    public static final long serialVersionUID = 1;
     private int user_id;
     private String username;
     private String password;
@@ -13,7 +14,7 @@ public class User implements Serializable {
     private String first_name;
     private String last_name;
     private boolean sex;
-    private Timestamp birthday;
+    private Date birthday;
     private byte[] avata;
     private int status;
     private boolean actived;
@@ -27,7 +28,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(int user_id, String username, String password, String email, String phone_number, String first_name, String last_name, boolean sex, Timestamp birthday, byte[] avata, int status, boolean actived, boolean blocked) {
+    public User(int user_id, String username, String password, String email, String phone_number, String first_name, String last_name, boolean sex, Date birthday, byte[] avata, int status, boolean actived, boolean blocked) {
 
         this.user_id = user_id;
         this.username = username;
@@ -109,11 +110,11 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public Timestamp getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Timestamp birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

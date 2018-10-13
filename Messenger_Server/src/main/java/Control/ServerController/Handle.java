@@ -2,7 +2,7 @@ package Control.ServerController;
 
 import java.sql.Connection;
 
-public abstract class Handle<T> {
-    Connection connection; 
-    abstract T execute();
+public abstract class Handle {
+    Connection connection;
+    public abstract void execute();
 }

@@ -5,6 +5,7 @@ import Model.User;
 import java.io.Serializable;
 
 public class LoginRequest implements Serializable {
+    public static final long serialVersionUID = 5;
     private String username;
     private String password;
 

@@ -1,3 +1,11 @@
+import Control.DAO.DAOConversation;
+import Control.DAO.DAOUser;
+import Control.ServerController.LoginHandle;
+import Control.utils.IOUtils;
+import Control.utils.SQLServerConnUtils_SQLJDBC;
+import Model.Login.LoginRequest;
+
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -7,80 +15,51 @@ import java.sql.*;
 import java.util.*;
 
 public class MessengerServer {
-    String URL = "jdbc:sqlserver://localhost:1433;databaseName=Messenger;user=underwear;password=mE39Dola4o";
-    private ServerSocket serverSocket;
-    HashMap<Integer, Vector<Socket>> hashMapSocket;
     HashMap<Integer, Vector<Object>> hashMapResponse;
     private int _conversation_id;
     private int _user_id;
 
     MessengerServer() {
-        Connection connection = null;
         try {
-            connection = DriverManager.getConnection(URL);
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select user_id from users");
-            _user_id = resultSet.getFetchSize() + 1;
-            resultSet = statement.executeQuery("select conversation_id from conversations");
-            _conversation_id = resultSet.getFetchSize() + 1;
-            serverSocket = new ServerSocket(9999);
-            hashMapSocket = new HashMap<Integer, Vector<Socket>>();
+            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+            _user_id = new DAOUser(connection).selectAll().size();
+            _conversation_id = new DAOConversation(connection).selectAll().size();
             hashMapResponse = new HashMap<Integer, Vector<Object>>();
+            IOUtils.getServerSocketSingleton();
+            IOUtils.getHashMapSocketSingleton();
             Listening();
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null && connection.isClosed() == false) {
-                    connection.close();
-                }
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
     void Listening() {
         while (true) {
             try {
-                Socket client = serverSocket.accept();
-                ObjectInputStream objectInputStream = new ObjectInputStream(client.getInputStream());
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-                Object object = objectInputStream.readObject();
-                Integer user_id;
-                // check port vs inetadd trung nhau thi k cho no vao sockets
-//                Vector<Socket> sockets = hashMapSocket.get(user_id);
-//                Iterator it = sockets.iterator();
-//                while(it.hasNext()){
-//                    Socket socket = (Socket)it.next();
-//                    if(socket.getPort() == client.getPort() && socket.getInetAddress() == client.getInetAddress()){
-//                        it.remove();
-//                        break;
-//                    }
-//                }
-//                sockets.add(client);
-
-//                if (object instanceof RegisterRequest) {
-//                    objectOutputStream.writeObject(RegisterHandle((RegisterRequest) object));
-//                } else if (object instanceof LoginRequest) {
-//                    objectOutputStream.writeObject(LoginHandle((LoginRequest) object));
-//                } else if (object instanceof CheckEmailRequest) {
-//                    objectOutputStream.writeObject(new CheckEmailResponse(CheckEmailHandle((CheckEmailRequest) object)));
-//                } else if (object instanceof CheckUsernameRequest) {
-//                    objectOutputStream.writeObject(new CheckEmailResponse(CheckUsernameHandle((CheckUsernameRequest) object)));
-//                } else if (object instanceof CreateConversationRequest) {
-//                    objectOutputStream.writeObject(new CreateConversationResponse(NewConversationHandle((CreateConversationRequest)object)));
-//                } else if(object instanceof AcceptConversationRequest){
-//                    objectOutputStream.writeObject(AcceptConversationHandle((AcceptConversationRequest)object));
-//                } else if(object instanceof Message){
-//
-//                }
+                Socket client = IOUtils.getServerSocketSingleton().accept();
+                Thread thread = new Thread(new Listenner(client));
+                thread.start();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            }
+        }
+    }
+
+    class Listenner implements Runnable{
+        Socket client;
+        public Listenner(Socket client){
+            this.client = client;
+        }
+        public void run() {
+            Object object = null;
+            while(true){
+                object = IOUtils.readObject(client);
+                if(object instanceof LoginRequest){
+                    System.out.println(1);
+                    new LoginHandle(client, object).execute();
+                }
             }
         }
     }
