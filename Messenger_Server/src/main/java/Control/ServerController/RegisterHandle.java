@@ -21,13 +21,7 @@ public class RegisterHandle extends Handle {
     DAOMessage daoMessage;
     public RegisterHandle(RegisterRequest registerRequest) {
         this.registerRequest = registerRequest;
-        try {
-            this.connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
     }
 
     @Override

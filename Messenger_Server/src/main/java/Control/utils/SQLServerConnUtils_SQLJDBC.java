@@ -9,19 +9,25 @@ public class SQLServerConnUtils_SQLJDBC {
  
      // Kết nối vào SQLServer.
      // (Sử dụng thư viện điều khiển SQLJDBC)
-    public static Connection getSQLServerConnection()
-             throws SQLException, ClassNotFoundException {
-        String hostName = "localhost";
-        String sqlInstanceName = "SQLEXPRESS";
-        String database = "Messenger";
-        String userName = "underwear";
-        String password = "mE39Dola4o";
+    public static Connection getSQLServerConnection() {
+        try{
+            if(connection != null && !connection.isClosed()) return connection;
+            String hostName = "localhost";
+            String sqlInstanceName = "SQLEXPRESS";
+            String database = "Messenger";
+            String userName = "underwear";
+            String password = "mE39Dola4o";
 
-        return getSQLServerConnection(hostName, sqlInstanceName,
-                database, userName, password);
-//        System.out.println("ok");
-//         return connection;
-     }
+            return getSQLServerConnection(hostName, sqlInstanceName,
+                    database, userName, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("khong the ket noi toi database");
+        return null;
+    }
 
      // Trường hợp sử dụng SQLServer.
      // Và thư viện SQLJDBC.

@@ -15,7 +15,7 @@ public class MessengerClient {
                 while(true){
                     Listenner();
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(1);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -27,16 +27,20 @@ public class MessengerClient {
 
     public void Listenner(){
         Object object = IOUtils.readObject();
+        System.out.println(object.toString());
         if(object instanceof LoginResponse){
             System.out.println("zxxx");
             if(((LoginResponse) object).isAccepted() == false) {
                 IOUtils.closeSocket();
+                System.out.println("login fail");
+            }
+            else {
+                System.out.println("login success");
             }
         }
     }
 
     public static void main(String[] args) {
-//        IOUtils.createIOSocket();
         MessengerClient mes = new MessengerClient();
     }
 }

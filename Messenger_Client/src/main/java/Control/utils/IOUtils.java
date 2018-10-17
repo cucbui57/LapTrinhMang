@@ -1,5 +1,7 @@
 package Control.utils;
 
+import Model.CloseSocket;
+
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,8 +9,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class IOUtils {
-    private static final String host = "192.168.221.100";
-    private static final int port = 50000;
+    private static final String host = "192.168.1.4";
+    private static final int port = 10000;
     private static Socket client;
     private static ObjectInputStream objectInputStream;
     private static ObjectOutputStream objectOutputStream;
@@ -35,6 +37,7 @@ public class IOUtils {
     }
 
     public static Object readObject(){
+        Object object = null;
         while(client == null || client.isClosed());
         try {
             if(objectInputStream == null)
@@ -42,29 +45,36 @@ public class IOUtils {
                 objectInputStream = new ObjectInputStream(client.getInputStream());
                 System.out.println("LOL");
             }
-            Object object = null;
             while(object == null){
+                if(client.isClosed()){
+                    objectInputStream = null;
+                    objectOutputStream = null;
+                    return object;
+                }
                 try{
                     object = objectInputStream.readObject();
                 }catch (EOFException e){
 
                 }
             }
-            return object;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return object;
     }
 
     public static void closeSocket(){
         try {
+            writeObject(new CloseSocket());
+            Thread.sleep(1000);
             client.close();
             objectInputStream = null;
             objectOutputStream = null;
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

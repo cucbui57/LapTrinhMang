@@ -19,14 +19,8 @@ public class SeenMessageHandle extends Handle {
     public SeenMessageHandle(Participant participant, HashMap<Integer, Vector<Socket>> sockets) {
         this.participant = participant;
         this.sockets = sockets;
-        try {
-            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            daoParticipant = new DAOParticipant(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        daoParticipant = new DAOParticipant(connection);
     }
 
     @Override

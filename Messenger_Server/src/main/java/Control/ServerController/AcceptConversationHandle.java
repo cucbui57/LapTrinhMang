@@ -27,16 +27,10 @@ public class AcceptConversationHandle extends Handle {
     public AcceptConversationHandle(AcceptNewConversationClientSend2Server acceptNewConversationClientSend2Server, HashMap<Integer, Vector<Socket>> sockets) {
         this.acceptNewConversationClientSend2Server = acceptNewConversationClientSend2Server;
         this.sockets = sockets;
-        try{
-            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            this.daoParticipant = new DAOParticipant(connection);
-            this.daoMessage = new DAOMessage(connection);
-            this.daoConversation = new DAOConversation(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        this.daoParticipant = new DAOParticipant(connection);
+        this.daoMessage = new DAOMessage(connection);
+        this.daoConversation = new DAOConversation(connection);
     }
 
     @Override

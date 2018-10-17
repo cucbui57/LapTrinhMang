@@ -13,14 +13,8 @@ public class UpdateContactHandle extends Handle {
     Contact contact;
     public UpdateContactHandle(Contact contact) {
         this.contact = contact;
-        try{
-            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            daoContact = new DAOContact(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        daoContact = new DAOContact(connection);
     }
 
     @Override

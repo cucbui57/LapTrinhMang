@@ -22,15 +22,9 @@ public class SendMessageHandle extends Handle {
     public SendMessageHandle(Message message, HashMap<Integer, Vector<Socket>> sockets) {
         this.message = message;
         this.sockets = sockets;
-        try{
-            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            daoMessage = new DAOMessage(connection);
-            daoParticipant = new DAOParticipant(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        daoMessage = new DAOMessage(connection);
+        daoParticipant = new DAOParticipant(connection);
     }
 
     @Override

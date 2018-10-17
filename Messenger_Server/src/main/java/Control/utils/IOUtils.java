@@ -1,25 +1,27 @@
 package Control.utils;
 
 import Model.AddParticipant.AcceptConversationResponse;
+import Model.CloseSocket;
 import javafx.util.Pair;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Vector;
+import java.net.SocketException;
+import java.util.*;
 
 public class IOUtils {
     private static ServerSocket serverSocket;
     private static HashMap<Integer, Vector<Socket>> hashMapSocket;
-    private static HashMap<Socket, Pair<ObjectInputStream, ObjectOutputStream>> socketIO;
+    private static HashMap<Socket, Pair<ObjectInputStream, ObjectOutputStream>> IOSockets;
     public IOUtils(){}
 
     public static ServerSocket getServerSocketSingleton(){
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         if(serverSocket == null) {
             try {
-                serverSocket = new ServerSocket(50000);
+                serverSocket = new ServerSocket(10000);
+                getHashMapSocketSingleton();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -27,32 +29,21 @@ public class IOUtils {
         return serverSocket;
     }
 
-    public static HashMap<Integer, Vector<Socket>> getHashMapSocketSingleton (){
+    static HashMap<Integer, Vector<Socket>> getHashMapSocketSingleton (){
         if(hashMapSocket == null) {
             hashMapSocket = new HashMap<Integer, Vector<Socket>>();
-            socketIO = new HashMap<Socket, Pair<ObjectInputStream, ObjectOutputStream>>();
+            IOSockets = new HashMap<Socket, Pair<ObjectInputStream, ObjectOutputStream>>();
         }
         return hashMapSocket;
     }
 
     public static Object readObject(Socket socket){
         Object object = null;
-        ObjectInputStream objectInputStream = null;
         try {
-            if(!socketIO.containsKey(socket)){
-                Pair<ObjectInputStream, ObjectOutputStream> pair = new Pair<ObjectInputStream, ObjectOutputStream>(
-                        new ObjectInputStream(socket.getInputStream()),
-                        new ObjectOutputStream(socket.getOutputStream()));
-                socketIO.put(socket, pair);
-            }
-            while(object == null){
-                try{
-                    objectInputStream = socketIO.get(socket).getKey();
-                    object = objectInputStream.readObject();
-                }catch (EOFException e){
-
-                }
-            }
+            addIOSocket(socket);
+            try{
+                object = IOSockets.get(socket).getKey().readObject();
+            } catch(EOFException e){}
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -62,17 +53,12 @@ public class IOUtils {
     }
 
     public static boolean writeObject(Socket socket, Object object){
-        ObjectOutputStream objectOutputStream = null;
         try {
-            if(!socketIO.containsKey(socket)) {
-                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                objectOutputStream.writeObject(object);
-                System.out.println("write oke");
-                return true;
+            if(socket.isClosed() || socket.equals(null)) {
+                removeIOSocket(socket);
             }
-            objectOutputStream = socketIO.get(socket).getValue();
-            objectOutputStream.writeObject(object);
-            System.out.println("write oke");
+            IOSockets.get(socket).getValue().writeObject(object);
+            System.out.println("whireObject oke");
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,10 +71,16 @@ public class IOUtils {
         try{
             for (Integer integer : user_id) {
                 Vector<Socket> sockets = hashMapSocket.get(integer);
-                for (Socket client : sockets) {
-                    objectOutputStream = socketIO.get(client).getValue();
-                    objectOutputStream.writeObject(object);
-                    System.out.println("write oke");
+                Iterator<Socket> iterator = sockets.iterator();
+                while(iterator.hasNext()){
+                    Socket socket = (Socket)iterator.next();
+                    if(socket.equals(null) || socket.isClosed()) {
+                        iterator.remove();
+                    }
+                    else {
+                        IOSockets.get(socket).getValue().writeObject(object);
+                        System.out.println("writeObject oke");
+                    }
                 }
             }
             return true;
@@ -98,23 +90,90 @@ public class IOUtils {
         }
     }
 
-    public static void addSocket(int user_id, Socket client){
+    static void addIOSocket(Socket socket){
+        try{
+            if(!IOSockets.containsKey(socket)){
+                Pair<ObjectInputStream, ObjectOutputStream> pair = new Pair<ObjectInputStream, ObjectOutputStream>(
+                        new ObjectInputStream(socket.getInputStream()),
+                        new ObjectOutputStream(socket.getOutputStream())
+                );
+                IOSockets.put(socket, pair);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void removeIOSocket(Socket socket){
+        if(IOSockets.containsKey(socket)){
+            IOSockets.remove(socket);
+        }
+    }
+
+    public static void addSocket(int user_id, Socket socket){
+        if(socket.isClosed() || socket.equals(null)) return;
         if(hashMapSocket.containsKey(user_id)){
             Vector<Socket> sockets = hashMapSocket.get(user_id);
-            Iterator it = sockets.iterator();
-            while(it.hasNext()){
-                Socket socket = (Socket)it.next();
-                if(socket.getPort() == client.getPort() && socket.getInetAddress() == client.getInetAddress()){
-                    it.remove();
-                    break;
-                }
+            if(!sockets.contains(socket)){
+                sockets.add(socket);
             }
-            sockets.add(client);
         }
         else{
             Vector<Socket> sockets = new Vector<Socket>();
-            sockets.add(client);
+            sockets.add(socket);
             hashMapSocket.put(user_id, sockets);
+        }
+    }
+
+    public static void removeSocket(int user_id, Socket socket){
+        if(hashMapSocket.containsKey(user_id)){
+            Vector<Socket> sockets = hashMapSocket.get(user_id);
+            if(sockets.contains(socket)){
+                sockets.remove(socket);
+                removeIOSocket(socket);
+            }
+        }
+    }
+
+    public static void removeSocket(Socket socket){
+        Set<Map.Entry<Integer, Vector<Socket>>> set = hashMapSocket.entrySet();
+        Iterator<Map.Entry<Integer, Vector<Socket>>> iterator = set.iterator();
+        if(iterator.hasNext()){
+            Vector<Socket> sockets = ((Map.Entry<Integer, Vector<Socket>>)iterator.next()).getValue();
+            if(sockets.contains(socket)){
+                sockets.remove(socket);
+                removeIOSocket(socket);
+                return;
+            }
+        }
+    }
+
+    public static void removeSocket(int user_id){
+        try{
+            if(hashMapSocket.containsKey(user_id)){
+                Vector<Socket> sockets = hashMapSocket.get(user_id);
+                for(Socket socket: sockets){
+                    if(!socket.equals(null) && !socket.isClosed()){
+                        socket.close();
+                    }
+                }
+                sockets.clear();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void closeSocket(Socket socket){
+        try{
+            if(socket != null && !socket.isClosed()) {
+                writeObject(socket, new CloseSocket());
+                socket.close();
+            }
+            removeIOSocket(socket);
+            removeSocket(socket);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

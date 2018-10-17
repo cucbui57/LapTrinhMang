@@ -22,23 +22,18 @@ public class LoginHandle extends Handle {
     public LoginHandle(Socket client, Object object){
         this.client = client;
         this.loginRequest = (LoginRequest)object;
-        try {
-            this.connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            daoUser = new DAOUser(connection);
-            daoContact = new DAOContact(connection);
-            daoConversation = new DAOConversation(connection);
-            daoMessage = new DAOMessage(connection);
-            daoParticipant = new DAOParticipant(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        daoUser = new DAOUser(connection);
+        daoContact = new DAOContact(connection);
+        daoConversation = new DAOConversation(connection);
+        daoMessage = new DAOMessage(connection);
+        daoParticipant = new DAOParticipant(connection);
     }
 
     @Override
     public void execute() {
         LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setAccepted(false);
         Vector<User> users = daoUser.selectbyUsername(loginRequest.getUsername());
         if(!users.isEmpty()) {
             loginResponse.setAccepted(true);

@@ -24,15 +24,9 @@ public class CreateConversationHandle extends Handle {
     public CreateConversationHandle(CreateConversationRequest createConversationRequest, HashMap<Integer, Vector<Socket>> sockets) {
         this.createConversationRequest = createConversationRequest;
         this.sockets = sockets;
-        try{
-            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            daoConversation = new DAOConversation(connection);
-            daoParticipant = new DAOParticipant(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        daoConversation = new DAOConversation(connection);
+        daoParticipant = new DAOParticipant(connection);
     }
 
     @Override

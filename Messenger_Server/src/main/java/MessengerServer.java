@@ -3,6 +3,7 @@ import Control.DAO.DAOUser;
 import Control.ServerController.LoginHandle;
 import Control.utils.IOUtils;
 import Control.utils.SQLServerConnUtils_SQLJDBC;
+import Model.CloseSocket;
 import Model.Login.LoginRequest;
 
 import java.io.EOFException;
@@ -16,31 +17,29 @@ import java.util.*;
 
 public class MessengerServer {
     HashMap<Integer, Vector<Object>> hashMapResponse;
+    HashMap<Socket, Thread> socketThreadHashMap = new HashMap<Socket, Thread>();
     private int _conversation_id;
     private int _user_id;
 
-    MessengerServer() {
-        try {
-            Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
-            _user_id = new DAOUser(connection).selectAll().size();
-            _conversation_id = new DAOConversation(connection).selectAll().size();
-            hashMapResponse = new HashMap<Integer, Vector<Object>>();
-            IOUtils.getServerSocketSingleton();
-            IOUtils.getHashMapSocketSingleton();
-            Listening();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public MessengerServer() {
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
+        Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
+        _user_id = new DAOUser(connection).selectAll().size();
+        _conversation_id = new DAOConversation(connection).selectAll().size();
+        hashMapResponse = new HashMap<Integer, Vector<Object>>();
+        IOUtils.getServerSocketSingleton();
+        Listening();
     }
 
     void Listening() {
+        System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
         while (true) {
             try {
                 Socket client = IOUtils.getServerSocketSingleton().accept();
                 Thread thread = new Thread(new Listenner(client));
-                thread.start();
+//                thread.setDaemon(true);
+                thread.start();     
+                socketThreadHashMap.put(client, thread);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -53,14 +52,28 @@ public class MessengerServer {
             this.client = client;
         }
         public void run() {
-            Object object = null;
+            System.out.println(new Throwable().getStackTrace()[0].getClassName());
             while(true){
-                object = IOUtils.readObject(client);
+                if(client == null || client.isClosed()) System.out.println("wtf");
+                if(client.isClosed()) {
+                    IOUtils.removeSocket(client);
+                    System.out.println("wtf 2");
+                    return;
+                }
+                Object object = IOUtils.readObject(client);
                 if(object instanceof LoginRequest){
-                    System.out.println(1);
                     new LoginHandle(client, object).execute();
+                } else if(object instanceof CloseSocket){
+                    IOUtils.closeSocket(client);
+                    return;
                 }
             }
+        }
+    }
+    void closeThread(Socket socket){
+        if(socketThreadHashMap.containsKey(socket)){
+            socketThreadHashMap.get(socket).stop();
+            socketThreadHashMap.remove(socket);
         }
     }
 

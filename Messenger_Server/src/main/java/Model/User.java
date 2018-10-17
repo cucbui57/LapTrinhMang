@@ -17,7 +17,7 @@ public class User implements Serializable {
     private Date birthday;
     private byte[] avata;
     private int status;
-    private boolean actived;
+    private boolean actived;+
     private boolean blocked;
 
     @Override
