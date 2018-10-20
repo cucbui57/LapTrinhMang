@@ -44,8 +44,9 @@ public class DAOParticipant extends IDAO<Participant> {
     public Vector<Participant> selectbyID(int ID) {
         Vector<Participant> participants = new Vector<Participant>();
         try{
-            String sql = "select * from Users where conversation_id = " + String.valueOf(ID);
-            resultSet = statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call ParticipantSelectByID ?");
+            this.preparedStatement.setInt(1, ID);
+            resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 Participant participant = new Participant(
                         resultSet.getInt(1),
@@ -69,10 +70,10 @@ public class DAOParticipant extends IDAO<Participant> {
     public Vector<Participant> selectbyNumbers(int ID, int numbers) {
         Vector<Participant> participants = new Vector<Participant>();
         try{
-            this.preparedStatement = connection.prepareStatement("select top ? * from Participants where user_id = ? order by seen_message_id");
-            preparedStatement.setInt(1, numbers);
-            preparedStatement.setInt(2, ID);
-            resultSet = preparedStatement.executeQuery();
+            this.preparedStatement = this.connection.prepareStatement("call ParticipantSelectByNumbers ? ?");
+            this.preparedStatement.setInt(1, ID);
+            this.preparedStatement.setInt(2, numbers);
+            resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 Participant participant = new Participant(
                         resultSet.getInt(1),
@@ -95,7 +96,7 @@ public class DAOParticipant extends IDAO<Participant> {
     public int insert(Participant participant) {
         int rowResult;
         try{
-            preparedStatement = connection.prepareStatement("call insertParticipants ? ? ? ? ? ?");
+            preparedStatement = connection.prepareStatement("call ParticipantInsert ? ? ? ? ? ?");
             preparedStatement.setInt(1, participant.getConversation_id());
             preparedStatement.setInt(2, participant.getUser_id());
             preparedStatement.setBoolean(3, participant.isAccepted());
@@ -114,7 +115,7 @@ public class DAOParticipant extends IDAO<Participant> {
     public int update(Participant participant) {
         int rowResult;
         try{
-            preparedStatement = connection.prepareStatement("call updateParticipants ? ? ? ? ? ?");
+            preparedStatement = connection.prepareStatement("call ParticipantUpdate ? ? ? ? ? ?");
             preparedStatement.setInt(1, participant.getConversation_id());
             preparedStatement.setInt(2, participant.getUser_id());
             preparedStatement.setBoolean(3, participant.isAccepted());

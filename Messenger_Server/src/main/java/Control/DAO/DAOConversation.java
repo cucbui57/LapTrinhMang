@@ -28,7 +28,9 @@ public class DAOConversation extends IDAO<Conversation> {
             while(resultSet.next()){
                 Conversation conversation = new Conversation(
                         resultSet.getInt(1),
-                        resultSet.getString(2)
+                        resultSet.getString(2),
+                        resultSet.getDate(3),
+                        resultSet.getDate(4)
                 );
                 conversation.setParticipants(daoParticipant.selectbyID(conversation.getConversation_id()));
                 conversations.add(conversation);
@@ -44,12 +46,15 @@ public class DAOConversation extends IDAO<Conversation> {
     public Vector<Conversation> selectbyID(int ID) {
         Vector<Conversation> conversations = new Vector<Conversation>();
         try{
-            String sql = "select * from Conversations where conversation_id = " + String.valueOf(ID);
-            this.resultSet = this.statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call ConversationSelectByID ?");
+            this.preparedStatement.setInt(1, ID);
+            resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Conversation conversation = new Conversation(
                         resultSet.getInt(1),
-                        resultSet.getString(2)
+                        resultSet.getString(2),
+                        resultSet.getDate(3),
+                        resultSet.getDate(4)
                 );
                 conversation.setParticipants(daoParticipant.selectbyID(conversation.getConversation_id()));
                 conversations.add(conversation);
@@ -70,9 +75,11 @@ public class DAOConversation extends IDAO<Conversation> {
     public int insert(Conversation conversation) {
         int rowResult;
         try{
-            this.preparedStatement = connection.prepareStatement("call insertConversation ? ?");
+            this.preparedStatement = connection.prepareStatement("call ConversationInsert ? ? ? ?");
             preparedStatement.setInt(1, conversation.getConversation_id());
             preparedStatement.setString(2, conversation.getTitle());
+            preparedStatement.setDate(3, conversation.getDate_created());
+            preparedStatement.setDate(4, conversation.getDate_deleted());
             rowResult = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,9 +92,11 @@ public class DAOConversation extends IDAO<Conversation> {
     public int update(Conversation conversation) {
         int rowResult;
         try{
-            this.preparedStatement = connection.prepareStatement("call updateConversation ? ?");
+            this.preparedStatement = connection.prepareStatement("call ConversationUpdate ? ? ? ?");
             preparedStatement.setInt(1, conversation.getConversation_id());
             preparedStatement.setString(2, conversation.getTitle());
+            preparedStatement.setDate(3, conversation.getDate_created());
+            preparedStatement.setDate(4, conversation.getDate_deleted());
             rowResult = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

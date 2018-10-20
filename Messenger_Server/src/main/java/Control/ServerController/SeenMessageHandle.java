@@ -14,10 +14,12 @@ import java.util.Vector;
 
 public class SeenMessageHandle extends Handle {
     DAOParticipant daoParticipant;
+    Socket client;
     Participant participant;
     HashMap<Integer, Vector<Socket>> sockets;
-    public SeenMessageHandle(Participant participant, HashMap<Integer, Vector<Socket>> sockets) {
-        this.participant = participant;
+    public SeenMessageHandle(Socket client, Object object, HashMap<Integer, Vector<Socket>> sockets) {
+        this.client = client;
+        this.participant = (Participant)object;
         this.sockets = sockets;
         Connection connection = SQLServerConnUtils_SQLJDBC.getSQLServerConnection();
         daoParticipant = new DAOParticipant(connection);
@@ -26,7 +28,7 @@ public class SeenMessageHandle extends Handle {
     @Override
     public void execute() {
         SuccessRespone successRespone = new SuccessRespone(false);
-        if(daoParticipant.updateSeenMessage(participant.getConversation_id(), participant.getUser_id(), participant.getSeen_message_id()) != 0){
+        if(daoParticipant.update(participant) != 0){
             successRespone.setSuccess(true);
             Vector<Participant> participants = daoParticipant.selectbyID(participant.getConversation_id());
             for(Participant participant: participants){
@@ -35,5 +37,6 @@ public class SeenMessageHandle extends Handle {
                 }
             }
         }
+        IOUtils.writeObject(client, successRespone);
     }
 }

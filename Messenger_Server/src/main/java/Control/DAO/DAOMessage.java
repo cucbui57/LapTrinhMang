@@ -64,8 +64,9 @@ public class DAOMessage extends IDAO<Message> {
     public Vector<Message> selectbyID(int ID) {
         Vector<Message> messages = new Vector<Message>();
         try{
-            String sql = "select * from Messages where message_id = " + String.valueOf(ID);
-            this.resultSet = this.statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call MessageSelectByID ?");
+            preparedStatement.setInt(1, ID);
+            resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 if(resultSet.getBoolean(5) == false){
                     Message message = new Message(
@@ -106,9 +107,9 @@ public class DAOMessage extends IDAO<Message> {
     public Vector<Message> selectbyNumbers(int ID, int numbers) {
         Vector<Message> messages = new Vector<Message>();
         try{
-            this.preparedStatement = connection.prepareStatement("select top ? * from Messages where conversation_id = ?");
-            preparedStatement.setInt(1, numbers);
-            preparedStatement.setInt(2, ID);
+            this.preparedStatement = this.connection.prepareStatement("call MessageSelectByNumbers ? ?");
+            preparedStatement.setInt(1, ID);
+            preparedStatement.setInt(2, numbers);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 if(resultSet.getBoolean(5) == false){
@@ -150,12 +151,12 @@ public class DAOMessage extends IDAO<Message> {
     public int insert(Message message) {
         int rowResult = 0;
         try{
-            this.preparedStatement = connection.prepareStatement("call insertMessages ? ? ? ? ? ? ?");
+            this.preparedStatement = connection.prepareStatement("call MessageInsert ? ? ? ? ? ? ?");
             preparedStatement.setInt(1, message.getMessage_id());
             preparedStatement.setInt(2, message.getConversation_id());
             preparedStatement.setInt(3, message.getSender_id());
-            preparedStatement.setDate(4, message.getDate_create());
-            preparedStatement.setTime(5, message.getTime_create());
+            preparedStatement.setDate(4, message.getDate_created());
+            preparedStatement.setTime(5, message.getTime_created());
             preparedStatement.setBoolean(6, message.isFile());
             preparedStatement.setString(7, message.getName());
             if(message.isFile()){

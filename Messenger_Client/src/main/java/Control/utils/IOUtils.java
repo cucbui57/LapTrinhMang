@@ -9,26 +9,27 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class IOUtils {
-    private static final String host = "192.168.1.4";
+    private static final String host = "localhost";
     private static final int port = 10000;
     private static Socket client;
     private static ObjectInputStream objectInputStream;
     private static ObjectOutputStream objectOutputStream;
 
     public static void createIOSocket(){
-        try {
-            client = new Socket(host, port);
-            objectOutputStream = null;
-            objectInputStream = null;
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(client == null || client.isClosed()){
+            try {
+                client = new Socket(host, port);
+                objectOutputStream = new ObjectOutputStream(client.getOutputStream());
+                objectInputStream = new ObjectInputStream(client.getInputStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public static void writeObject(Object object){
+        createIOSocket();
         try {
-            if(objectOutputStream == null)
-                objectOutputStream = new ObjectOutputStream(client.getOutputStream());
             objectOutputStream.writeObject(object);
             System.out.println("write oke");
         } catch (IOException e) {
@@ -38,24 +39,12 @@ public class IOUtils {
 
     public static Object readObject(){
         Object object = null;
-        while(client == null || client.isClosed());
+        createIOSocket();
         try {
-            if(objectInputStream == null)
-            {
-                objectInputStream = new ObjectInputStream(client.getInputStream());
-                System.out.println("LOL");
-            }
-            while(object == null){
-                if(client.isClosed()){
-                    objectInputStream = null;
-                    objectOutputStream = null;
-                    return object;
-                }
-                try{
-                    object = objectInputStream.readObject();
-                }catch (EOFException e){
+            try{
+                object = objectInputStream.readObject();
+            } catch(EOFException e){
 
-                }
             }
         } catch (IOException e) {
             e.printStackTrace();

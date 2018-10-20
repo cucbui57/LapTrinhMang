@@ -5,6 +5,7 @@ import Control.utils.IOUtils;
 import Control.utils.SQLServerConnUtils_SQLJDBC;
 import Model.CloseSocket;
 import Model.Login.LoginRequest;
+import Model.Register.RegisterRequest;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -61,19 +62,16 @@ public class MessengerServer {
                     return;
                 }
                 Object object = IOUtils.readObject(client);
+                System.out.println(object.toString());
                 if(object instanceof LoginRequest){
                     new LoginHandle(client, object).execute();
+                } else if(object instanceof RegisterRequest){
+
                 } else if(object instanceof CloseSocket){
                     IOUtils.closeSocket(client);
                     return;
                 }
             }
-        }
-    }
-    void closeThread(Socket socket){
-        if(socketThreadHashMap.containsKey(socket)){
-            socketThreadHashMap.get(socket).stop();
-            socketThreadHashMap.remove(socket);
         }
     }
 

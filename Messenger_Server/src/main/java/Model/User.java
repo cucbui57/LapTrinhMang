@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class User implements Serializable {
-    public static final long serialVersionUID = 1;
+    public static final long serialVersionUID = 1L;
     private int user_id;
     private String username;
     private String password;
@@ -17,19 +17,20 @@ public class User implements Serializable {
     private Date birthday;
     private byte[] avata;
     private int status;
-    private boolean actived;+
+    private boolean actived;
     private boolean blocked;
+    private Date date_created;
+    private Date date_deleted;
 
     @Override
     public User clone() {
-        return new User(user_id, username, null, email, phone_number, first_name, last_name, sex, birthday, avata, status, true, false);
+        return new User(user_id, username, null, email, phone_number, first_name, last_name, sex, birthday, avata, status, true, false, date_created, date_deleted);
     }
 
     public User() {
     }
 
-    public User(int user_id, String username, String password, String email, String phone_number, String first_name, String last_name, boolean sex, Date birthday, byte[] avata, int status, boolean actived, boolean blocked) {
-
+    public User(int user_id, String username, String password, String email, String phone_number, String first_name, String last_name, boolean sex, Date birthday, byte[] avata, int status, boolean actived, boolean blocked, Date date_created, Date date_deleted) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
@@ -43,6 +44,8 @@ public class User implements Serializable {
         this.status = status;
         this.actived = actived;
         this.blocked = blocked;
+        this.date_created = date_created;
+        this.date_deleted = date_deleted;
     }
 
     public int getUser_id() {
@@ -148,5 +151,25 @@ public class User implements Serializable {
 
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Date getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(Date date_created) {
+        this.date_created = date_created;
+    }
+
+    public Date getDate_deleted() {
+        return date_deleted;
+    }
+
+    public void setDate_deleted(Date date_deleted) {
+        this.date_deleted = date_deleted;
     }
 }

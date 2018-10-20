@@ -40,7 +40,9 @@ public class DAOUser extends IDAO<User> {
                         bytes,
                         resultSet.getInt(11),
                         resultSet.getBoolean(12),
-                        resultSet.getBoolean(13)
+                        resultSet.getBoolean(13),
+                        resultSet.getDate(14),
+                        resultSet.getDate(15)
                 );
                 users.add(user);
             }
@@ -55,8 +57,9 @@ public class DAOUser extends IDAO<User> {
     public Vector<User> selectbyID(int ID) {
         Vector<User> users = new Vector<User>();
         try{
-            String sql = "select * from Users where user_id = " + String.valueOf(ID);
-            resultSet = statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call UserSelectByID ?");
+            this.preparedStatement.setInt(1, ID);
+            resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
                 byte[] bytes = IOUtils.File2Byte(path);
@@ -73,7 +76,9 @@ public class DAOUser extends IDAO<User> {
                         bytes,
                         resultSet.getInt(11),
                         resultSet.getBoolean(12),
-                        resultSet.getBoolean(13)
+                        resultSet.getBoolean(13),
+                        resultSet.getDate(14),
+                        resultSet.getDate(15)
                 );
                 users.add(user);
             }
@@ -92,8 +97,9 @@ public class DAOUser extends IDAO<User> {
     public Vector<User> selectbyUsername(String username) {
         Vector<User> users = new Vector<User>();
         try{
-            String sql = "select * from Users where username = '" + username + "'";
-            resultSet = statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call UserSelectByUsername ?");
+            this.preparedStatement.setString(1, username);
+            resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
                 byte[] bytes = IOUtils.File2Byte(path);
@@ -110,7 +116,44 @@ public class DAOUser extends IDAO<User> {
                         bytes,
                         resultSet.getInt(11),
                         resultSet.getBoolean(12),
-                        resultSet.getBoolean(13)
+                        resultSet.getBoolean(13),
+                        resultSet.getDate(14),
+                        resultSet.getDate(15)
+                );
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return users;
+    }
+
+    public Vector<User> selectbyName(String name) {
+        Vector<User> users = new Vector<User>();
+        try{
+            this.preparedStatement = this.connection.prepareStatement("call UserSelectByName ?");
+            this.preparedStatement.setString(1, name);
+            resultSet = this.preparedStatement.executeQuery();
+            while(resultSet.next()){
+                String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
+                byte[] bytes = IOUtils.File2Byte(path);
+                User user = new User(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getBoolean(8),
+                        resultSet.getDate(9),
+                        bytes,
+                        resultSet.getInt(11),
+                        resultSet.getBoolean(12),
+                        resultSet.getBoolean(13),
+                        resultSet.getDate(14),
+                        resultSet.getDate(15)
                 );
                 users.add(user);
             }
@@ -123,8 +166,9 @@ public class DAOUser extends IDAO<User> {
 
     public boolean isExistEmail(String email){
         try{
-            String sql = "select user_id from Users where email = '" + email + "'";
-            resultSet = statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call UserSelectByEmail ?");
+            this.preparedStatement.setString(1, email);
+            resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 return true;
             }
@@ -136,8 +180,9 @@ public class DAOUser extends IDAO<User> {
 
     public boolean isExistUsername(String username){
         try{
-            String sql = "select user_id from Users where username = '" + username + "'";
-            resultSet = statement.executeQuery(sql);
+            this.preparedStatement = this.connection.prepareStatement("call UserSelectByUsername ?");
+            this.preparedStatement.setString(1, username);
+            resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 return true;
             }
@@ -151,9 +196,9 @@ public class DAOUser extends IDAO<User> {
     public int insert(User user) {
         int rowResult;
         try{
-            String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
+            String path = pathAvata + Integer.toString(user.getUser_id()) + ".jpg";
             if(IOUtils.Byte2File(path, user.getAvata())){
-                preparedStatement = connection.prepareStatement("call insertUsers ? ? ? ? ? ? ? ? ? ? ? ?");
+                preparedStatement = connection.prepareStatement("call UserInsert ? ? ?  ? ? ?  ? ? ?  ? ? ?  ? ? ?");
                 preparedStatement.setInt(1, user.getUser_id());
                 preparedStatement.setString(2, user.getUsername());
                 preparedStatement.setString(3, user.getPassword());
@@ -163,9 +208,12 @@ public class DAOUser extends IDAO<User> {
                 preparedStatement.setString(7, user.getLast_name());
                 preparedStatement.setBoolean(8, user.isSex());
                 preparedStatement.setDate(9, user.getBirthday());
-                preparedStatement.setInt(10, user.getStatus());
-                preparedStatement.setBoolean(11, user.isActived());
-                preparedStatement.setBoolean(12, user.isBlocked());
+                preparedStatement.setString(10, path);
+                preparedStatement.setInt(11, user.getStatus());
+                preparedStatement.setBoolean(12, user.isActived());
+                preparedStatement.setBoolean(13, user.isBlocked());
+                preparedStatement.setDate(14, user.getDate_created());
+                preparedStatement.setDate(15, user.getDate_deleted());
                 rowResult = preparedStatement.executeUpdate();
             } else {
                 rowResult = 0;
@@ -182,9 +230,9 @@ public class DAOUser extends IDAO<User> {
     public int update(User user) {
         int rowResult;
         try{
-            String path = pathAvata + Integer.toString(resultSet.getInt(1)) + ".jpg";
+            String path = pathAvata + Integer.toString(user.getUser_id()) + ".jpg";
             if(IOUtils.Byte2File(path, user.getAvata())){
-                preparedStatement = connection.prepareStatement("call updateUsers ? ? ? ? ? ? ? ? ? ? ? ?");
+                preparedStatement = connection.prepareStatement("call UserUpdate ? ? ?  ? ? ?  ? ? ?  ? ? ?  ? ? ?");
                 preparedStatement.setInt(1, user.getUser_id());
                 preparedStatement.setString(2, user.getUsername());
                 preparedStatement.setString(3, user.getPassword());
@@ -194,9 +242,12 @@ public class DAOUser extends IDAO<User> {
                 preparedStatement.setString(7, user.getLast_name());
                 preparedStatement.setBoolean(8, user.isSex());
                 preparedStatement.setDate(9, user.getBirthday());
-                preparedStatement.setInt(10, user.getStatus());
-                preparedStatement.setBoolean(11, user.isActived());
-                preparedStatement.setBoolean(12, user.isBlocked());
+                preparedStatement.setString(10, path);
+                preparedStatement.setInt(11, user.getStatus());
+                preparedStatement.setBoolean(12, user.isActived());
+                preparedStatement.setBoolean(13, user.isBlocked());
+                preparedStatement.setDate(14, user.getDate_created());
+                preparedStatement.setDate(15, user.getDate_deleted());
                 rowResult = preparedStatement.executeUpdate();
             }else {
                 rowResult = 0;

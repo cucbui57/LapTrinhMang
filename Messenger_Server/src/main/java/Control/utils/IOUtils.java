@@ -42,6 +42,9 @@ public class IOUtils {
         try {
             addIOSocket(socket);
             try{
+                if(socket.isClosed()) return object;
+//                ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+//                object = objectInputStream.readObject();
                 object = IOSockets.get(socket).getKey().readObject();
             } catch(EOFException e){}
         } catch (IOException e) {
@@ -106,6 +109,12 @@ public class IOUtils {
 
     static void removeIOSocket(Socket socket){
         if(IOSockets.containsKey(socket)){
+            try {
+                IOSockets.get(socket).getKey().close();
+                IOSockets.get(socket).getValue().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             IOSockets.remove(socket);
         }
     }

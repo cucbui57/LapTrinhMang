@@ -21,13 +21,14 @@ public class DAOContact extends IDAO<Contact> {
     public Vector<Contact> selectAll() {
         Vector<Contact> contacts = new Vector<Contact>();
         try{
-            String sql = "select * from Contacts";
+            String sql = "call ContactSelectAll";
             this.resultSet = this.statement.executeQuery(sql);
             while(resultSet.next()){
                 Contact contact = new Contact(
                         resultSet.getInt(1),
                         resultSet.getInt(2),
-                        resultSet.getInt(3)
+                        resultSet.getInt(3),
+                        resultSet.getDate(4)
                 );
                 contacts.add(contact);
             }
@@ -42,13 +43,15 @@ public class DAOContact extends IDAO<Contact> {
     public Vector<Contact> selectbyID(int ID) {
         Vector<Contact> contacts = new Vector<Contact>();
         try{
-            String sql = "select * from Contacts where user_id = " + String.valueOf(ID);
-            this.resultSet = this.statement.executeQuery(sql);
+            this.preparedStatement = connection.prepareStatement("call ContactSelectByID ?");
+            this.preparedStatement.setInt(1, ID);
+            this.resultSet = this.preparedStatement.executeQuery();
             while(resultSet.next()){
                 Contact contact = new Contact(
                         resultSet.getInt(1),
                         resultSet.getInt(2),
-                        resultSet.getInt(3)
+                        resultSet.getInt(3),
+                        resultSet.getDate(4)
                 );
                 contacts.add(contact);
             }
@@ -68,10 +71,11 @@ public class DAOContact extends IDAO<Contact> {
     public int insert(Contact contact) {
         int rowResult;
         try{
-            this.preparedStatement = connection.prepareStatement("call insertContacts ? ? ?");
+            this.preparedStatement = connection.prepareStatement("call insertContacts ? ? ? ?");
             preparedStatement.setInt(1, contact.getUser_id());
             preparedStatement.setInt(2, contact.getContact_id());
             preparedStatement.setInt(3, contact.getStatus());
+            preparedStatement.setDate(4, contact.getDate_created());
             rowResult = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,10 +88,11 @@ public class DAOContact extends IDAO<Contact> {
     public int update(Contact contact) {
         int rowResult;
         try{
-            this.preparedStatement = connection.prepareStatement("call updateContacts ? ? ?");
+            this.preparedStatement = connection.prepareStatement("call updateContacts ? ? ? ?");
             preparedStatement.setInt(1, contact.getUser_id());
             preparedStatement.setInt(2, contact.getContact_id());
             preparedStatement.setInt(3, contact.getStatus());
+            preparedStatement.setDate(4, contact.getDate_created());
             rowResult = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
