@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="bridj-0.7.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/Control/lib/bridj-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/control/lib/bridj-0.7.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

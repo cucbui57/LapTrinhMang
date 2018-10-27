@@ -1,7 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64072bc1-e21f-4dea-bf0b-813eb3cba54c" name="Default Changelist" comment="" />
+    <list default="true" id="64072bc1-e21f-4dea-bf0b-813eb3cba54c" name="Default Changelist" comment="Updated by nguyentrieuanduong">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/BTL_LTM_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/DataConvertor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Camera/CameraConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Camera/lib/webcam-capture-0.3.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Connector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Microphone/MicrophoneConnector - Copy.jav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Microphone/MicrophoneConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Speaker/AudioPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/Devices/Speaker/SpeakerConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/MyControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/UDPSocket/ProcessUDPSocketData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/UDPSocket/UDPSocketClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/lib/bridj-0.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/lib/slf4j-api-1.7.25.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/lib/slf4j-simple-1.7.25.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/MyAudioDataFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/MyImageFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/CallingCameraViewer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/LocalCameraPreviewer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/MyView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Black_1920x1080.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Black_1920x1080.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/note" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/control/AudioTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/control/MediaTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/control/SystemPropties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/control/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/control/TestControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/control/TestUDPSocket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/view/TestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/bridj_0_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/bridj_0_7_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_0_0_jre8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_7_25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/slf4j_simple_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_simple_1_7_25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/webcam_capture_0_3_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/webcam_capture_0_3_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTL_LTM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTL_LTM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/DataConvertor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/DataConvertor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Camera/CameraConnector$CaptureFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Camera/CameraConnector$CaptureFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Camera/CameraConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Camera/CameraConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Camera/MyFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Connector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Microphone/MicrophoneConnector$ListenMicrophone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Microphone/MicrophoneConnector$ListenMicrophone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Microphone/MicrophoneConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Microphone/MicrophoneConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Speaker/SpeakerConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/Devices/Speaker/SpeakerConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/JDBC/SQLServer/SQLServerConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/JDBC/SQLServer/lib/mssql-jdbc-7.0.0.jre8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/MyControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/MyControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/UDPSocket/ProcessUDPSocketData$SendFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/UDPSocket/ProcessUDPSocketData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/UDPSocket/ProcessUDPSocketData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Control/UDPSocket/UDPSocketClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/Control/UDPSocket/UDPSocketClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/META-INF/BTL_LTM.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Model/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Model/Sex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/Model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/View/CallingCameraViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/View/CallingCameraViewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/View/LocalCameraPreviewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/View/LocalCameraPreviewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/View/MyView$MyRepaint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/View/MyView$MyRepaint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/View/MyView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTL_LTM/View/MyView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/resources/Black_1920x1080.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/resources/Black_1920x1080.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/resources/note" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/AudioTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/MediaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/MediaTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/SortableLocale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/SystemProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/Test$Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/TestControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/TestUDPSocket$SendFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/TestUDPSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/TestView$MyRp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/TestView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/UDPSocketClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTL_LTM/test/UDPSocketServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/DataConvertor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Devices/Camera/CameraConnector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Devices/Camera/MyFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Devices/Camera/lib/webcam-capture-0.3.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Devices/Connector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Devices/Microphone/MicrophoneConnector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Devices/Speaker/SpeakerConnector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/JDBC/SQLServer/SQLServerConnector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/JDBC/SQLServer/lib/mssql-jdbc-7.0.0.jre8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/MyControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/UDPSocket/ProcessUDPSocketData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/UDPSocket/UDPSocketClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/lib/bridj-0.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/lib/slf4j-simple-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Sex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/CallingCameraViewer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/LocalCameraPreviewer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/Black_1920x1080.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/Black_1920x1080.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/note" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/AudioTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/MediaTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/SystemPropties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestUDPSocket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/UDPSocketClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/UDPSocketServer.java" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Nhom8/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,94 +186,61 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1976454272">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="txt" value="90" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="90" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="BTL_LTM" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Control/MyControl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Control/UDPSocket/UDPSocketClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Control/UDPSocket/ProcessUDPSocketData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="82" column="108" selection-start-line="82" selection-start-column="108" selection-end-line="82" selection-end-column="108" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Control/DataConvertor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/CallingCameraViewer.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/control/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="6" column="107" selection-start-line="6" selection-start-column="107" selection-end-line="6" selection-end-column="107" />
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Control/Devices/Microphone/MicrophoneConnector.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/control/MyControl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="112" column="42" lean-forward="true" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Control/Devices/Speaker/SpeakerConnector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2173#2174#0" expanded="true" />
+                <element signature="e#2233#2234#0" expanded="true" />
+                <element signature="e#2268#2269#0" expanded="true" />
+                <element signature="e#2320#2321#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,6 +270,14 @@
       <replace>CameraConnector</replace>
       <replace>speaker</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="nguyentrieuanduong &lt;nguyentrieuanduongbn@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -240,6 +330,8 @@
         <option value="$PROJECT_DIR$/src/Control/Devices/Speaker/SpeakerConnector.java" />
         <option value="$PROJECT_DIR$/src/test/Test.java" />
         <option value="$PROJECT_DIR$/src/Control/Devices/Microphone/MicrophoneConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/control/MyControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/control/Devices/Speaker/SpeakerConnector.java" />
       </list>
     </option>
   </component>
@@ -293,19 +385,159 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="Devices" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="Devices" type="462c0819:PsiDirectoryNode" />
+              <item name="Camera" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="Devices" type="462c0819:PsiDirectoryNode" />
+              <item name="Microphone" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+              <item name="Devices" type="462c0819:PsiDirectoryNode" />
+              <item name="Speaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BTL_LTM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BTL_LTM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538020815652" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Messenger_Server" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540647509830" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -323,13 +555,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
-    <configuration name="CallVideoTest1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.CallVideoTest1" />
+  <component name="RunManager" selected="Application.MyControl (1)">
+    <configuration name="MyControl (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="control.MyControl" />
       <module name="BTL_LTM" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="control.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -391,18 +623,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Test" />
-      <item itemvalue="Application.CallVideoTest1" />
       <item itemvalue="Application.MyControl" />
       <item itemvalue="Application.SystemProperties" />
       <item itemvalue="Application.TestControl" />
+      <item itemvalue="Application.MyControl (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyControl (1)" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.MyControl" />
         <item itemvalue="Application.TestControl" />
         <item itemvalue="Application.SystemProperties" />
-        <item itemvalue="Application.CallVideoTest1" />
       </list>
     </recent_temporary>
   </component>
@@ -432,7 +664,7 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49519232" weight="0.28895614" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49519232" visible="true" weight="0.28895614" />
       <window_info id="Structure" order="1" sideWeight="0.5048077" side_tool="true" weight="0.2647504" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -464,23 +696,15 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Updated by nguyentrieuanduong" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated by nguyentrieuanduong" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/SystemPropties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/Control/Devices/Camera/lib/webcam-capture-0.3.12-sources.jar!/com/github/sarxos/webcam/Webcam.java" />
-    <entry file="jar://$PROJECT_DIR$/src/Control/Devices/Camera/lib/webcam-capture-0.3.12-sources.jar!/com/github/sarxos/webcam/WebcamDevice.java" />
-    <entry file="jar://$PROJECT_DIR$/src/Control/Devices/Camera/lib/webcam-capture-0.3.12.jar!/com/github/sarxos/webcam/Webcam.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-461">
-          <caret line="70" column="22" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/Control/Devices/Camera/lib/webcam-capture-0.3.12.jar!/com/github/sarxos/webcam/Webcam.class" />
     <entry file="file://$PROJECT_DIR$/Nhom8/pom.xml" />
     <entry file="jar://$USER_HOME$/.ideaLibSources/webcam-capture-0.3.12-sources.jar!/com/github/sarxos/webcam/WebcamCompositeDriver.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -496,13 +720,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/note">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="121" selection-start-line="2" selection-start-column="121" selection-end-line="2" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/note" />
     <entry file="file://$PROJECT_DIR$/src/test/TestWebcamCapture.java" />
     <entry file="jar://$USER_HOME$/.ideaLibSources/webcam-capture-0.3.12-sources.jar!/com/github/sarxos/webcam/WebcamDiscoveryService.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -520,13 +738,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hello-world.png" />
     <entry file="file://$PROJECT_DIR$/src/Control/Devices/Camera/OpenCVCameraConnector.java" />
-    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Connector.java" />
     <entry file="jar://$USER_HOME$/.ideaLibSources/webcam-capture-0.3.12-sources.jar!/com/github/sarxos/webcam/Webcam.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13311">
@@ -636,13 +848,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/View/LocalCameraPreviewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/LocalCameraPreviewer.java" />
     <entry file="file://$PROJECT_DIR$/src/test/TestUDPSocket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -688,34 +894,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Camera/MyFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/MyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="32" column="46" lean-forward="true" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/JDBC/SQLServer/SQLServerConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Camera/CameraConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="108" column="126" lean-forward="true" selection-start-line="108" selection-start-column="68" selection-end-line="108" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Camera/MyFrame.java" />
+    <entry file="file://$PROJECT_DIR$/src/View/MyView.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/JDBC/SQLServer/SQLServerConnector.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Camera/CameraConnector.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/sound/sampled/AudioFormat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-873">
@@ -723,73 +905,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/MyControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/UDPSocket/UDPSocketClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/UDPSocket/ProcessUDPSocketData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="82" column="108" selection-start-line="82" selection-start-column="108" selection-end-line="82" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/DataConvertor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/CallingCameraViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="107" selection-start-line="6" selection-start-column="107" selection-end-line="6" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Speaker/SpeakerConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Microphone/MicrophoneConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="112" column="42" lean-forward="true" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/MyControl.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/UDPSocket/UDPSocketClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/UDPSocket/ProcessUDPSocketData.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/DataConvertor.java" />
+    <entry file="file://$PROJECT_DIR$/src/View/CallingCameraViewer.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Microphone/MicrophoneConnector.java" />
+    <entry file="file://$PROJECT_DIR$/src/Control/Devices/Speaker/SpeakerConnector.java" />
     <entry file="file://$PROJECT_DIR$/src/test/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
+        <state relative-caret-position="17">
           <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/control/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/control/Devices/Speaker/SpeakerConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="83" column="24" lean-forward="true" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
+          <folding>
+            <element signature="e#5754#5755#0" expanded="true" />
+            <element signature="e#5788#5789#0" expanded="true" />
+            <element signature="e#5839#5840#0" expanded="true" />
+            <element signature="e#5885#5886#0" expanded="true" />
+            <element signature="e#5953#5954#0" expanded="true" />
+            <element signature="e#5987#5988#0" expanded="true" />
+            <element signature="e#6071#6072#0" expanded="true" />
+            <element signature="e#6117#6118#0" expanded="true" />
+            <element signature="e#6162#6163#0" expanded="true" />
+            <element signature="e#6206#6207#0" expanded="true" />
+            <element signature="e#6379#6380#0" expanded="true" />
+            <element signature="e#6411#6412#0" expanded="true" />
+            <element signature="e#6462#6463#0" expanded="true" />
+            <element signature="e#6504#6505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/control/MyControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+          <folding>
+            <element signature="e#2173#2174#0" expanded="true" />
+            <element signature="e#2233#2234#0" expanded="true" />
+            <element signature="e#2268#2269#0" expanded="true" />
+            <element signature="e#2320#2321#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -800,11 +971,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>unnamed</last-edited>
+          <last-edited>BTL_LTM:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -852,6 +1024,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -859,7 +1032,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mssql-jdbc-7.0.0.jre8</last-edited>
+          <last-edited>bridj-0.7.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
