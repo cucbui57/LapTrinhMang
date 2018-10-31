@@ -1,6 +1,6 @@
 package view;
 
-import control.Devices.Camera.CameraConnector;
+import control.devices.cameras.CameraConnector;
 
 import javax.swing.*;
 import java.awt.*;

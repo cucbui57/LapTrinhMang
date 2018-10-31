@@ -1,7 +1,7 @@
 package control;
 
-import control.Devices.Camera.CameraConnector;
-import control.Devices.Microphone.MicrophoneConnector;
+import control.devices.cameras.CameraConnector;
+import control.devices.microphones.MicrophoneConnector;
 import model.MyAudioDataFrame;
 import model.MyImageFrame;
 

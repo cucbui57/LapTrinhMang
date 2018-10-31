@@ -1,4 +1,4 @@
-package control.Devices.Speaker;
+package control.devices.speakers;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

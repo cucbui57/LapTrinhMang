@@ -1,6 +1,6 @@
 package control;
 
-import control.Devices.Camera.CameraConnector;
+import control.devices.cameras.CameraConnector;
 import view.CallingCameraViewer;
 import view.LocalCameraPreviewer;
 import view.TestView;

@@ -1,7 +1,7 @@
-package control.Devices.Speaker;
+package control.devices.speakers;
 
 import control.DataConvertor;
-import control.Devices.Connector;
+import control.devices.Connector;
 import javafx.util.Pair;
 import model.MyAudioDataFrame;
 

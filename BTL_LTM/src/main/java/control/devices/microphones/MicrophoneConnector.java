@@ -1,6 +1,6 @@
-package control.Devices.Microphone;
+package control.devices.microphones;
 
-import control.Devices.Connector;
+import control.devices.Connector;
 import javafx.util.Pair;
 
 import javax.sound.sampled.*;

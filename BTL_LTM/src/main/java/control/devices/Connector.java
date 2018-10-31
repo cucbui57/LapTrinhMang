@@ -1,4 +1,4 @@
-package control.Devices;
+package control.devices;
 
 public interface Connector {
     boolean connect();

@@ -1,10 +1,10 @@
 package control;
 
-import control.Devices.Camera.CameraConnector;
-import control.Devices.Microphone.MicrophoneConnector;
-import control.Devices.Speaker.SpeakerConnector;
 import control.UDPSocket.ProcessUDPSocketData;
 import control.UDPSocket.UDPSocketClient;
+import control.devices.cameras.CameraConnector;
+import control.devices.microphones.MicrophoneConnector;
+import control.devices.speakers.SpeakerConnector;
 import view.CallingCameraViewer;
 import view.LocalCameraPreviewer;
 import view.MyView;

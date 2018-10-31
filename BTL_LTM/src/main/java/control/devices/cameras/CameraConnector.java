@@ -1,7 +1,7 @@
-package control.Devices.Camera;
+package control.devices.cameras;
 
 import com.github.sarxos.webcam.Webcam;
-import control.Devices.Connector;
+import control.devices.Connector;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
